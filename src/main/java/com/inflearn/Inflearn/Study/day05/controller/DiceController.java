@@ -1,5 +1,6 @@
 package com.inflearn.Inflearn.Study.day05.controller;
 
+import com.inflearn.Inflearn.Study.day05.validation.Validation;
 import com.inflearn.Inflearn.Study.day05.view.InputView;
 import com.inflearn.Inflearn.Study.day05.view.OutputView;
 
@@ -10,9 +11,16 @@ public class DiceController {
     int[] dice = new int[SIZE_OF_DICE + 1];
 
     public void play() throws IOException {
-        int count = InputView.readInput();
-        roleDice(count);
-        OutputView.printOutput(dice);
+        try {
+            int count = InputView.readInput();
+            Validation.validateInputNumberIsOverZero(count);
+            roleDice(count);
+            OutputView.printOutput(dice);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            play();
+        }
     }
 
     private int extractNumber() {
