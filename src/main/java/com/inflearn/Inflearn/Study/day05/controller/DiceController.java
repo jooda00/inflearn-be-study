@@ -6,20 +6,24 @@ import com.inflearn.Inflearn.Study.day05.view.OutputView;
 import java.io.IOException;
 
 public class DiceController {
-    private static final int SIZE_OF_DICE = 12;
+    private static final int SIZE_OF_DICE = 6;
     int[] dice = new int[SIZE_OF_DICE + 1];
 
     public void play() throws IOException {
         int count = InputView.readInput();
-        for(int i = 0; i < count; i++) {
-            int num = extractNumber();
-            dice[num]++;
-        }
+        roleDice(count);
         OutputView.printOutput(dice);
     }
 
     private int extractNumber() {
         int num = (int) (Math.random() * SIZE_OF_DICE) + 1;
         return num;
+    }
+
+    private void roleDice(int count) {
+        for(int i = 0; i < count; i++) {
+            int num = extractNumber();
+            dice[num]++;
+        }
     }
 }
