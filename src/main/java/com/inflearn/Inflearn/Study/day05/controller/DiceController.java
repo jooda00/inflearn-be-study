@@ -6,7 +6,8 @@ import com.inflearn.Inflearn.Study.day05.view.OutputView;
 import java.io.IOException;
 
 public class DiceController {
-    static int[] dice = new int[7];
+    private static final int SIZE_OF_DICE = 12;
+    static int[] dice = new int[SIZE_OF_DICE + 1];
     public void play() throws IOException {
         int count = InputView.readInput();
         for(int i = 0; i < count; i++) {
@@ -17,7 +18,7 @@ public class DiceController {
     }
 
     private int extractNumber() {
-        int num = (int) (Math.random() * 6) + 1;
+        int num = (int) (Math.random() * SIZE_OF_DICE) + 1;
         return num;
     }
 }
