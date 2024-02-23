@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class InputView {
     public static int readInput() throws IOException {
-        System.out.print("반복 횟수를 입력해 주세요 : ");
+        System.out.print("숫자를 입력하세요 : ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int count = Integer.parseInt(br.readLine());
         return count;
