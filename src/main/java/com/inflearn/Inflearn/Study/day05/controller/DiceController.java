@@ -3,8 +3,6 @@ package com.inflearn.Inflearn.Study.day05.controller;
 import com.inflearn.Inflearn.Study.day05.view.InputView;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DiceController {
     static int[] dice = new int[7];
