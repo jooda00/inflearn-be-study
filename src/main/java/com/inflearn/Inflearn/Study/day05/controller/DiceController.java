@@ -16,7 +16,7 @@ public class DiceController {
         OutputView.printOutput(dice);
     }
 
-    public int extractNumber() {
+    private int extractNumber() {
         int num = (int) (Math.random() * 6) + 1;
         return num;
     }
