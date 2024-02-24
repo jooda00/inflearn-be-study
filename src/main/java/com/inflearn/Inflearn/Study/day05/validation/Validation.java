@@ -1,5 +1,6 @@
 package com.inflearn.Inflearn.Study.day05.validation;
 
+// 예외 처리 부분
 public class Validation {
     public static final void validateInputNumberIsOverZero(int count) {
         if(count < 1) {

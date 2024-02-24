@@ -4,6 +4,7 @@ import com.inflearn.Inflearn.Study.day05.controller.DiceController;
 
 import java.io.IOException;
 
+// 메인 부분
 public class DiceRefactor {
     public static void main(String[] args) throws IOException {
         DiceController diceController = new DiceController();

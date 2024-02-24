@@ -1,5 +1,6 @@
 package com.inflearn.Inflearn.Study.day05.view;
 
+// 출력 화면 부분
 public class OutputView {
     public static void printOutput(int[] dice) {
         int len = dice.length;

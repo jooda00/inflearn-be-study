@@ -6,6 +6,7 @@ import com.inflearn.Inflearn.Study.day05.view.OutputView;
 
 import java.io.IOException;
 
+// 컨트롤러 부분
 public class DiceController {
     private static final int SIZE_OF_DICE = 6;
     int[] dice = new int[SIZE_OF_DICE + 1];
