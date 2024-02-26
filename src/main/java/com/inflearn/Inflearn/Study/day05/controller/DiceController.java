@@ -11,7 +11,7 @@ public class DiceController {
     private static final int SIZE_OF_DICE = 6;
     int[] dice = new int[SIZE_OF_DICE + 1];
 
-    public void play() throws IOException {
+    public void play() {
         try {
             int count = InputView.readInput();
             Validation.validateInputNumberIsOverZero(count);

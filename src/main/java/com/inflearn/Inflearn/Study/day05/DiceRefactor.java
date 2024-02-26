@@ -6,7 +6,7 @@ import java.io.IOException;
 
 // 메인 부분
 public class DiceRefactor {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         DiceController diceController = new DiceController();
         diceController.play();
     }
