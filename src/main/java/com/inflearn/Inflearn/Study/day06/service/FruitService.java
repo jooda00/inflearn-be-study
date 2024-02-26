@@ -22,10 +22,18 @@ public class FruitService {
     }
 
     public void sellFruit(FruitUpdateRequest updateRequest) {
+        boolean isExist = fruitRepository.isFruitExistById(updateRequest.getId());
+        if (isExist) {
+            throw new IllegalArgumentException("데이터베이스에 팔 과일이 없습니다.");
+        }
         fruitRepository.update(updateRequest.getId());
     }
 
     public FruitSoldResponse getFruitIsSoldOrNot(String name) {
+        boolean isExist = fruitRepository.isFruitExistByName(name);
+        if (isExist) {
+            throw new IllegalArgumentException("이름과 일치하는 과일이 없습니다.");
+        }
         return fruitRepository.getList(name);
     }
 }

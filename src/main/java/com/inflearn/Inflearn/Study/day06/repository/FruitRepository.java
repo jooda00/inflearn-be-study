@@ -22,21 +22,12 @@ public class FruitRepository {
     }
 
     public void update(Long id) {
-        String readSql = "select * from fruit where id = ?";
-        boolean isExistFruit = jdbcTemplate.query(readSql, (rs, rowNum) -> 0, id).isEmpty();
-        if(isExistFruit) {
-            throw new IllegalArgumentException("데이터베이스에 팔 과일이 없습니다.");
-        }
         String sql = "update fruit set is_sold = 1 where id = ?";
         jdbcTemplate.update(sql, id);
     }
 
     public FruitSoldResponse getList(String name) {
         String sql = "select is_sold, sum(price) from fruit where name = ? group by is_sold";
-        boolean isExistFruit = jdbcTemplate.query(sql, (rs, rowNum) -> 0, name).isEmpty();
-        if(isExistFruit) {
-            throw new IllegalArgumentException("이름과 일치하는 과일이 없습니다.");
-        }
         Map<Boolean, Long> soldStatusMap = jdbcTemplate.query(sql, new Object[]{name}, rs -> {
             Map<Boolean, Long> map = new HashMap<>();
             while(rs.next()) {
@@ -48,5 +39,15 @@ public class FruitRepository {
         Long soldPrice = soldStatusMap.getOrDefault(true, 0L);
         Long notSoldPrice = soldStatusMap.getOrDefault(false, 0L);
         return new FruitSoldResponse(soldPrice, notSoldPrice);
+    }
+
+    public boolean isFruitExistById(long id) {
+        String sql = "select * from fruit where id = ?";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> 0, id).isEmpty();
+    }
+
+    public boolean isFruitExistByName(String name) {
+        String sql = "select * from fruit where name = ?";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> 0, name).isEmpty();
     }
 }
