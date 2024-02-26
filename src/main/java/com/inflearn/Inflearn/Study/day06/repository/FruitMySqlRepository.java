@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Primary
-@Repository
+@Repository // 인터페이스 구현체에서 붙여주면 된다.
 public class FruitMySqlRepository implements FruitRepository{
     private final JdbcTemplate jdbcTemplate;
 
