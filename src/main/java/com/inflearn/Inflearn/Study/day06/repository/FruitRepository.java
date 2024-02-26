@@ -1,6 +1,5 @@
 package com.inflearn.Inflearn.Study.day06.repository;
 
-import com.inflearn.Inflearn.Study.day06.dto.FruitRequest;
 import com.inflearn.Inflearn.Study.day06.dto.FruitSoldResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

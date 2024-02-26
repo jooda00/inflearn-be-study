@@ -7,9 +7,6 @@ import com.inflearn.Inflearn.Study.day06.entity.Fruit;
 import com.inflearn.Inflearn.Study.day06.repository.FruitRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Service // 스프링 빈으로 만들어 줌
 public class FruitService {
 
