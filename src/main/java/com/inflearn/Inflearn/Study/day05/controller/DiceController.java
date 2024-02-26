@@ -4,8 +4,6 @@ import com.inflearn.Inflearn.Study.day05.validation.Validation;
 import com.inflearn.Inflearn.Study.day05.view.InputView;
 import com.inflearn.Inflearn.Study.day05.view.OutputView;
 
-import java.io.IOException;
-
 // 컨트롤러 부분
 public class DiceController {
     private static final int SIZE_OF_DICE = 6;
@@ -15,7 +13,7 @@ public class DiceController {
         try {
             int count = InputView.readInput();
             Validation.validateInputNumberIsOverZero(count);
-            roleDice(count);
+            rollDice(count);
             OutputView.printOutput(dice);
         }
         catch (Exception e) {
@@ -29,7 +27,7 @@ public class DiceController {
         return num;
     }
 
-    private void roleDice(int count) {
+    private void rollDice(int count) {
         for(int i = 0; i < count; i++) {
             int num = extractNumber();
             dice[num]++;
