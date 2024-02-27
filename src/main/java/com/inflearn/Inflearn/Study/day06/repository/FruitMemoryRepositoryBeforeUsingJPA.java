@@ -1,7 +1,6 @@
 package com.inflearn.Inflearn.Study.day06.repository;
 
 import com.inflearn.Inflearn.Study.day06.dto.FruitSoldResponse;
-import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -9,12 +8,11 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-@Primary
-@Repository // 인터페이스 구현체에서 붙여주면 된다.
-public class FruitMySqlRepository implements FruitRepository{
+@Repository
+public class FruitMemoryRepositoryBeforeUsingJPA implements FruitRepositoryBeforeUsingJPA {
     private final JdbcTemplate jdbcTemplate;
 
-    public FruitMySqlRepository(JdbcTemplate jdbcTemplate) {
+    public FruitMemoryRepositoryBeforeUsingJPA(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

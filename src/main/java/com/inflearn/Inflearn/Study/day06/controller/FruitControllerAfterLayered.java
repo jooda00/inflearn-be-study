@@ -3,15 +3,15 @@ package com.inflearn.Inflearn.Study.day06.controller;
 import com.inflearn.Inflearn.Study.day06.dto.FruitRequest;
 import com.inflearn.Inflearn.Study.day06.dto.FruitSoldResponse;
 import com.inflearn.Inflearn.Study.day06.dto.FruitUpdateRequest;
-import com.inflearn.Inflearn.Study.day06.service.FruitService;
+import com.inflearn.Inflearn.Study.day06.service.FruitServiceBeforeUsingJPA;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FruitControllerAfterLayered {
 
-    private final FruitService fruitService;
+    private final FruitServiceBeforeUsingJPA fruitService;
 
-    public FruitControllerAfterLayered(FruitService fruitService) {
+    public FruitControllerAfterLayered(FruitServiceBeforeUsingJPA fruitService) {
         this.fruitService = fruitService;
     }
 

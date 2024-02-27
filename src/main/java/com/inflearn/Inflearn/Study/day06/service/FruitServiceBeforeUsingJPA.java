@@ -4,15 +4,15 @@ import com.inflearn.Inflearn.Study.day06.dto.FruitRequest;
 import com.inflearn.Inflearn.Study.day06.dto.FruitSoldResponse;
 import com.inflearn.Inflearn.Study.day06.dto.FruitUpdateRequest;
 import com.inflearn.Inflearn.Study.day06.entity.Fruit;
-import com.inflearn.Inflearn.Study.day06.repository.FruitRepository;
+import com.inflearn.Inflearn.Study.day06.repository.FruitRepositoryBeforeUsingJPA;
 import org.springframework.stereotype.Service;
 
 @Service // 스프링 빈으로 만들어 줌
-public class FruitService {
+public class FruitServiceBeforeUsingJPA {
 
-    private final FruitRepository fruitRepository;
+    private final FruitRepositoryBeforeUsingJPA fruitRepository;
 
-    public FruitService(FruitRepository fruitRepository) {
+    public FruitServiceBeforeUsingJPA(FruitRepositoryBeforeUsingJPA fruitRepository) {
         this.fruitRepository = fruitRepository;
     }
 
