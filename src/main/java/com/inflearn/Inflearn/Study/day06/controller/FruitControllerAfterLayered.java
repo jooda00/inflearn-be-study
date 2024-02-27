@@ -7,11 +7,11 @@ import com.inflearn.Inflearn.Study.day06.service.FruitService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class FruitController {
+public class FruitControllerAfterLayered {
 
     private final FruitService fruitService;
 
-    public FruitController(FruitService fruitService) {
+    public FruitControllerAfterLayered(FruitService fruitService) {
         this.fruitService = fruitService;
     }
 
