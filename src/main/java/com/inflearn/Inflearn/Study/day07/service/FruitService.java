@@ -34,6 +34,7 @@ public class FruitService {
     }
 
     public FruitSoldResponse getFruitIsSoldOrNot(String name) {
+        long startTime = System.currentTimeMillis();
         List<Fruit> fruit = fruitRepository.findByName(name);
         if(fruit.size() == 0) {
             throw new IllegalArgumentException("이름과 일치하는 과일이 없습니다.");
@@ -49,6 +50,8 @@ public class FruitService {
                 isNotSold = ((BigDecimal) res[1]).longValue();
             }
         }
+        long endTime = System.currentTimeMillis();
+        System.out.println("걸린 시간 : " + (endTime - startTime));
         return new FruitSoldResponse(isSold, isNotSold);
     }
 
