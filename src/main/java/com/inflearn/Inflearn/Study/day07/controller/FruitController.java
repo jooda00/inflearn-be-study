@@ -1,5 +1,6 @@
 package com.inflearn.Inflearn.Study.day07.controller;
 
+import com.inflearn.Inflearn.Study.day07.dto.FruitCountResponse;
 import com.inflearn.Inflearn.Study.day07.dto.FruitRequest;
 import com.inflearn.Inflearn.Study.day07.dto.FruitSoldResponse;
 import com.inflearn.Inflearn.Study.day07.dto.FruitUpdateRequest;
@@ -28,5 +29,10 @@ public class FruitController {
     @GetMapping("/api/v3/fruit/stat")
     public FruitSoldResponse getFruitIsSoldOrNot(@RequestParam String name) {
         return fruitService.getFruitIsSoldOrNot(name);
+    }
+
+    @GetMapping("/api/v3/fruit/count")
+    public FruitCountResponse getFruitCountByName(@RequestParam String name) {
+        return fruitService.getFruitCountByName(name);
     }
 }

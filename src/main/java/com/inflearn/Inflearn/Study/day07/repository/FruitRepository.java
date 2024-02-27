@@ -12,4 +12,6 @@ public interface FruitRepository extends JpaRepository<Fruit, Long> {
 
     @Query(value = "select f.is_sold, sum(f.price) from fruit f where f.name = :name group by f.is_sold", nativeQuery = true)
     List<Object[]> findIsSoldAndPriceByName(@Param("name") String name);
+
+    Long countByName(String name);
 }

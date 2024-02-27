@@ -1,5 +1,6 @@
 package com.inflearn.Inflearn.Study.day07.service;
 
+import com.inflearn.Inflearn.Study.day07.dto.FruitCountResponse;
 import com.inflearn.Inflearn.Study.day07.dto.FruitRequest;
 import com.inflearn.Inflearn.Study.day07.dto.FruitSoldResponse;
 import com.inflearn.Inflearn.Study.day07.dto.FruitUpdateRequest;
@@ -52,5 +53,9 @@ public class FruitService {
             }
         }
         return new FruitSoldResponse(isSold, isNotSold);
+    }
+
+    public FruitCountResponse getFruitCountByName(String name) {
+        return new FruitCountResponse(fruitRepository.countByName(name));
     }
 }
