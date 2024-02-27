@@ -1,5 +1,6 @@
 package com.inflearn.Inflearn.Study.day07.repository;
 
+import com.inflearn.Inflearn.Study.day07.dto.FruitResponse;
 import com.inflearn.Inflearn.Study.day07.entity.Fruit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +15,8 @@ public interface FruitRepository extends JpaRepository<Fruit, Long> {
     List<Object[]> findIsSoldAndPriceByName(@Param("name") String name);
 
     Long countByName(String name);
+
+    List<FruitResponse> findAllByPriceGreaterThanEqualAndIsSoldFalse(Long price);
+
+    List<FruitResponse> findAllByPriceLessThanEqualAndIsSoldFalse(Long price);
 }

@@ -1,9 +1,6 @@
 package com.inflearn.Inflearn.Study.day07.service;
 
-import com.inflearn.Inflearn.Study.day07.dto.FruitCountResponse;
-import com.inflearn.Inflearn.Study.day07.dto.FruitRequest;
-import com.inflearn.Inflearn.Study.day07.dto.FruitSoldResponse;
-import com.inflearn.Inflearn.Study.day07.dto.FruitUpdateRequest;
+import com.inflearn.Inflearn.Study.day07.dto.*;
 import com.inflearn.Inflearn.Study.day07.entity.Fruit;
 import com.inflearn.Inflearn.Study.day07.repository.FruitRepository;
 import org.springframework.stereotype.Service;
@@ -57,5 +54,13 @@ public class FruitService {
 
     public FruitCountResponse getFruitCountByName(String name) {
         return new FruitCountResponse(fruitRepository.countByName(name));
+    }
+
+    public List<FruitResponse> getFruitGreaterThanEqualByPrice(Long price) {
+        return fruitRepository.findAllByPriceGreaterThanEqualAndIsSoldFalse(price);
+    }
+
+    public List<FruitResponse> getFruitLessThanEqualByPrice(Long price) {
+        return fruitRepository.findAllByPriceLessThanEqualAndIsSoldFalse(price);
     }
 }

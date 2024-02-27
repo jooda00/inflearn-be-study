@@ -1,11 +1,10 @@
 package com.inflearn.Inflearn.Study.day07.controller;
 
-import com.inflearn.Inflearn.Study.day07.dto.FruitCountResponse;
-import com.inflearn.Inflearn.Study.day07.dto.FruitRequest;
-import com.inflearn.Inflearn.Study.day07.dto.FruitSoldResponse;
-import com.inflearn.Inflearn.Study.day07.dto.FruitUpdateRequest;
+import com.inflearn.Inflearn.Study.day07.dto.*;
 import com.inflearn.Inflearn.Study.day07.service.FruitService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class FruitController {
@@ -34,5 +33,13 @@ public class FruitController {
     @GetMapping("/api/v3/fruit/count")
     public FruitCountResponse getFruitCountByName(@RequestParam String name) {
         return fruitService.getFruitCountByName(name);
+    }
+
+    @GetMapping("/api/v3/fruit/list")
+    public List<FruitResponse> getFruitByPrice(@RequestParam String opt, @RequestParam Long price) {
+        if(opt.equals("GTE")) {
+            return fruitService.getFruitGreaterThanEqualByPrice(price);
+        }
+        return fruitService.getFruitLessThanEqualByPrice(price);
     }
 }
