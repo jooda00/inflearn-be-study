@@ -76,4 +76,9 @@ public class FruitService {
                 .map(FruitResponse::new)
                 .collect(Collectors.toList());
     }
+
+
+    public List<FruitResponse> getFruitByPriceIsSoldFalse(String opt, Long price) {
+        return fruitRepositoryUsingQuerydsl.findAllByPriceIsNotSold(opt, price);
+    }
 }

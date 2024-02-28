@@ -42,4 +42,9 @@ public class FruitController {
         }
         return fruitService.getFruitLessThanEqualByPrice(price);
     }
+
+    @GetMapping("/api/v3/fruit/dsl/list")
+    public List<FruitResponse> getFruitByPriceUsingQuerydsl(@RequestParam String opt, @RequestParam Long price) {
+        return fruitService.getFruitByPriceIsSoldFalse(opt, price);
+    }
 }
