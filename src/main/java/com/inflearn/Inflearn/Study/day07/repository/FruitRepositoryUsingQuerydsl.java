@@ -1,10 +1,8 @@
 package com.inflearn.Inflearn.Study.day07.repository;
 
 import com.inflearn.Inflearn.Study.day07.dto.FruitResponse;
-import com.inflearn.Inflearn.Study.day07.entity.Fruit;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
