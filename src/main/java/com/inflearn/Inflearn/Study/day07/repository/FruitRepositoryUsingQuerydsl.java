@@ -1,4 +1,4 @@
-package com.inflearn.Inflearn.Study.day07.querydsl;
+package com.inflearn.Inflearn.Study.day07.repository;
 
 import com.inflearn.Inflearn.Study.day07.dto.FruitResponse;
 import com.inflearn.Inflearn.Study.day07.dto.FruitSoldResponse;
