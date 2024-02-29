@@ -10,6 +10,7 @@ import java.util.List;
 public interface FruitRepository extends JpaRepository<Fruit, Long> {
     List<Fruit> findByName(String name);
 
+    // querydsl로 리팩토링
     @Query(value = "select f.is_sold, sum(f.price) from fruit f where f.name = :name group by f.is_sold", nativeQuery = true)
     List<Object[]> findIsSoldAndPriceByName(@Param("name") String name);
 

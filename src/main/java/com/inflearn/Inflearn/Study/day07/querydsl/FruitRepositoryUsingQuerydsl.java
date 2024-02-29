@@ -1,8 +1,10 @@
 package com.inflearn.Inflearn.Study.day07.querydsl;
 
 import com.inflearn.Inflearn.Study.day07.dto.FruitResponse;
+import com.inflearn.Inflearn.Study.day07.dto.FruitSoldResponse;
 import com.inflearn.Inflearn.Study.day07.entity.FruitPriceOption;
 import com.inflearn.Inflearn.Study.day07.entity.QFruit;
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;
 
@@ -43,4 +45,29 @@ public class FruitRepositoryUsingQuerydsl {
                 .stream().map(FruitResponse::new).collect(Collectors.toList());
     }
 
+    public FruitSoldResponse findIsSoldAndPriceByNameUsingQueryDSL(String name) {
+        long startTime = System.currentTimeMillis();
+        QFruit fruit = QFruit.fruit;
+        List<Tuple> results = queryFactory
+                .select(fruit.isSold, fruit.price.sum())
+                .from(fruit)
+                .where(fruit.name.eq(name))
+                .groupBy(fruit.isSold)
+                .fetch();
+
+        Long salesAmount = 0L;
+        Long noSalesAMount = 0L;
+
+        for(Tuple res : results) {
+            if(res.get(fruit.isSold)) {
+                salesAmount = res.get(fruit.price.sum()).longValue();
+            }
+            else {
+                noSalesAMount  = res.get(fruit.price.sum()).longValue();
+            }
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("QD 실행 시간 : " + (endTime - startTime));
+        return new FruitSoldResponse(salesAmount, noSalesAMount);
+    }
 }

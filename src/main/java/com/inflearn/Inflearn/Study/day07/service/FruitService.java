@@ -5,6 +5,7 @@ import com.inflearn.Inflearn.Study.day07.entity.Fruit;
 import com.inflearn.Inflearn.Study.day07.entity.FruitPriceOption;
 import com.inflearn.Inflearn.Study.day07.repository.FruitRepository;
 import com.inflearn.Inflearn.Study.day07.querydsl.FruitRepositoryUsingQuerydsl;
+import com.querydsl.core.Tuple;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,7 +39,7 @@ public class FruitService {
         fruit.get().soldFruit();
     }
 
-    public FruitSoldResponse getFruitIsSoldOrNot(String name) {
+/*    public FruitSoldResponse getFruitIsSoldOrNot(String name) {
         List<Fruit> fruit = fruitRepository.findByName(name);
         if(fruit.size() == 0) {
             throw new IllegalArgumentException("이름과 일치하는 과일이 없습니다.");
@@ -58,6 +59,13 @@ public class FruitService {
         long endTime = System.currentTimeMillis();
         System.out.println("걸린 시간 : " + (endTime - startTime));
         return new FruitSoldResponse(isSold, isNotSold);
+    }*/
+
+    public FruitSoldResponse getFruitIsSoldOrNot(String name) {
+        if(fruitRepository.findByName(name).size() == 0) {
+            throw new IllegalArgumentException("이름과 일치하는 과일이 없습니다.");
+        }
+        return fruitRepositoryUsingQuerydsl.findIsSoldAndPriceByNameUsingQueryDSL(name);
     }
 
     public FruitCountResponse getFruitCountByName(String name) {
@@ -77,7 +85,6 @@ public class FruitService {
                 .map(FruitResponse::new)
                 .collect(Collectors.toList());
     }
-
 
     public List<FruitResponse> getFruitByPriceIsSoldFalse(FruitPriceOption opt, Long price) {
         return fruitRepositoryUsingQuerydsl.findAllByPriceIsNotSold(opt, price);
