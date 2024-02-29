@@ -28,7 +28,12 @@ public class FruitController {
 
     @GetMapping("/api/v3/fruit/stat")
     public FruitSoldResponse getFruitIsSoldOrNot(@RequestParam String name) {
-        return fruitService.getFruitIsSoldOrNot(name);
+        return fruitService.getFruitIsSoldOrNotV1(name);
+    }
+
+    @GetMapping("/api/v3/v2/fruit/stat")
+    public FruitSoldResponse getFruitIsSoldOrNotV2(@RequestParam String name) {
+        return fruitService.getFruitIsSoldOrNotV2(name);
     }
 
     @GetMapping("/api/v3/fruit/count")

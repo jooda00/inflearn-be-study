@@ -46,7 +46,6 @@ public class FruitRepositoryUsingQuerydsl {
     }
 
     public FruitSoldResponse findIsSoldAndPriceByNameUsingQueryDSL(String name) {
-        long startTime = System.currentTimeMillis();
         QFruit fruit = QFruit.fruit;
         List<Tuple> results = queryFactory
                 .select(fruit.isSold, fruit.price.sum())
@@ -66,8 +65,17 @@ public class FruitRepositoryUsingQuerydsl {
                 noSalesAMount  = res.get(fruit.price.sum()).longValue();
             }
         }
-        long endTime = System.currentTimeMillis();
-        System.out.println("QD 실행 시간 : " + (endTime - startTime));
         return new FruitSoldResponse(salesAmount, noSalesAMount);
+    }
+
+    public List<Tuple> findIsSoldAndPriceByNameUsingQueryDSLV2(String name) {
+        QFruit fruit = QFruit.fruit;
+        List<Tuple> results = queryFactory
+                .select(fruit.isSold, fruit.price.sum())
+                .from(fruit)
+                .where(fruit.name.eq(name))
+                .groupBy(fruit.isSold)
+                .fetch();
+        return results;
     }
 }
