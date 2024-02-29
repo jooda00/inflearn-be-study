@@ -1,14 +1,13 @@
-package com.inflearn.Inflearn.Study.day07.repository;
+package com.inflearn.Inflearn.Study.day07.querydsl;
 
 import com.inflearn.Inflearn.Study.day07.dto.FruitResponse;
-import com.querydsl.core.BooleanBuilder;
+import com.inflearn.Inflearn.Study.day07.entity.FruitPriceOption;
+import com.inflearn.Inflearn.Study.day07.entity.QFruit;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static com.inflearn.Inflearn.Study.day07.entity.QFruit.fruit;
 
 @Repository
 public class FruitRepositoryUsingQuerydsl {
@@ -19,7 +18,7 @@ public class FruitRepositoryUsingQuerydsl {
         this.queryFactory = queryFactory;
     }
 
-    public List<FruitResponse> findAllByPriceIsNotSold(String opt, Long price) {
+/*    public List<FruitResponse> findAllByPriceIsNotSold(String opt, Long price) {
         // 동적 쿼리
         BooleanBuilder builder = new BooleanBuilder();
         if("GTE".equals(opt)) {
@@ -33,5 +32,15 @@ public class FruitRepositoryUsingQuerydsl {
                 .where(builder, fruit.isSold.eq(false))
                 .fetch()
                 .stream().map(FruitResponse::new).collect(Collectors.toList());
+    }*/
+
+    public List<FruitResponse> findAllByPriceIsNotSold(FruitPriceOption opt, Long price) {
+        QFruit fruit = QFruit.fruit;
+        return queryFactory
+                .selectFrom(fruit)
+                .where(opt.getPredicate(fruit, price), fruit.isSold.eq(false))
+                .fetch()
+                .stream().map(FruitResponse::new).collect(Collectors.toList());
     }
+
 }

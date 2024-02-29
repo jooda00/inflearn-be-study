@@ -1,6 +1,7 @@
 package com.inflearn.Inflearn.Study.day07.controller;
 
 import com.inflearn.Inflearn.Study.day07.dto.*;
+import com.inflearn.Inflearn.Study.day07.entity.FruitPriceOption;
 import com.inflearn.Inflearn.Study.day07.service.FruitService;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,7 +45,7 @@ public class FruitController {
     }
 
     @GetMapping("/api/v3/fruit/dsl/list")
-    public List<FruitResponse> getFruitByPriceUsingQuerydsl(@RequestParam String opt, @RequestParam Long price) {
+    public List<FruitResponse> getFruitByPriceUsingQuerydsl(@RequestParam FruitPriceOption opt, @RequestParam Long price) {
         return fruitService.getFruitByPriceIsSoldFalse(opt, price);
     }
 }

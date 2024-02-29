@@ -2,8 +2,9 @@ package com.inflearn.Inflearn.Study.day07.service;
 
 import com.inflearn.Inflearn.Study.day07.dto.*;
 import com.inflearn.Inflearn.Study.day07.entity.Fruit;
+import com.inflearn.Inflearn.Study.day07.entity.FruitPriceOption;
 import com.inflearn.Inflearn.Study.day07.repository.FruitRepository;
-import com.inflearn.Inflearn.Study.day07.repository.FruitRepositoryUsingQuerydsl;
+import com.inflearn.Inflearn.Study.day07.querydsl.FruitRepositoryUsingQuerydsl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -78,7 +79,7 @@ public class FruitService {
     }
 
 
-    public List<FruitResponse> getFruitByPriceIsSoldFalse(String opt, Long price) {
+    public List<FruitResponse> getFruitByPriceIsSoldFalse(FruitPriceOption opt, Long price) {
         return fruitRepositoryUsingQuerydsl.findAllByPriceIsNotSold(opt, price);
     }
 }
